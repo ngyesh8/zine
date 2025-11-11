@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Question 1</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 3rem;
+    }
+
+    /* Question section */
+    .question-block {
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .question-block p {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .question-block h1 {
+      font-size: 3rem;
+      margin-top: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Input + button */
+    .input-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    input {
+      padding: 0.6rem 1rem;
+      width: 300px;
+      border: 1px solid black;
+      background: white;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      background: lightgray;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .main-flex {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+      max-width: 800px;
+      margin-top: 2rem;
+    }
+
+    .image-box img {
+      width: 180px;
+      height: auto;
+    }
+
+    .responses-box {
+      background: #eeeeee;
+      padding: 1rem;
+      border-radius: 4px;
+      width: 100%;
+      max-width: 350px;
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+    }
+
+    /* Individual answers fade-in */
+    .answer-card {
+      opacity: 0;
+      animation: fadeIn 0.8s forwards;
+      margin-bottom: 0.4rem;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="question-block">
+    <p>What are you doing on your device when it is at</p>
+    <h1>100%?</h1>
+  </div>
+
+  <div class="input-row">
+    <input type="text" id="answer" placeholder="enter response here">
+    <button onclick="submitAnswer()">reply</button>
+  </div>
+
+  <div class="main-flex">
+    <div class="image-box">
+      <img src="images/battery.png" alt="battery">
+    </div>
+
+    <div id="answersContainer" class="responses-box"></div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+    import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyApYOoX_nkOs3Sb3b9xZd_KKwc-PG0v8Uk",
+      authDomain: "interactive-site-project-3.firebaseapp.com",
+      databaseURL: "https://interactive-site-project-3-default-rtdb.firebaseio.com",
+      projectId: "interactive-site-project-3",
+      storageBucket: "interactive-site-project-3.firebasestorage.app",
+      messagingSenderId: "959806604439",
+      appId: "1:959806604439:web:033937fd1f63425b0dd5d2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const answersRef = ref(db, "question1_answers");
+
+    window.submitAnswer = function () {
+      const val = document.getElementById("answer").value.trim();
+      if (val.length > 0) {
+        push(answersRef, val);
+        window.location.href = "question2.html";
+      }
+    };
+
+    onValue(answersRef, snapshot => {
+      const answers = snapshot.val();
+      const container = document.getElementById("answersContainer");
+      container.innerHTML = "";
+      if (!answers) return;
+
+      let arr = Object.values(answers).sort(() => Math.random() - 0.5).slice(0, 8);
+
+      arr.forEach((text, i) => {
+        const el = document.createElement("div");
+        el.className = "answer-card";
+        el.style.animationDelay = `${i * 0.12}s`;
+        el.textContent = text + ",";
+        container.appendChild(el);
+      });
+    });
+  </script>
+
+</body>
+</html>
