@@ -1,4 +1,128 @@
-body{
-	margin: auto;
-	width: 60%;
+/* mobile-first container */
+:root {
+  --max-width: 420px;
+  --gutter: 20px;
+  --muted: #eeeeee;
+  --bubble-bg: #fff;
+  --bubble-border: rgba(0,0,0,0.06);
+}
+
+* { box-sizing: border-box; }
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 28px 20px;
+  background: #fff;
+  color: #111;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Question section */
+.question-block {
+  margin-bottom: 18px;
+}
+.question-block p {
+  font-size: 16px;
+  margin: 0 0 6px 0;
+  letter-spacing: 0.6px;
+}
+.question-block h1 {
+  font-size: 48px;
+  margin: 0 0 14px 0;
+  line-height: 1;
+}
+
+/* Input + button */
+.input-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+input[type="text"] {
+  padding: 14px 12px;
+  flex: 1 1 auto;
+  border: 2px solid #000;
+  background: #fff;
+  font-size: 16px;
+  outline: none;
+  min-width: 0;
+}
+button {
+  padding: 12px 14px;
+  border: none;
+  background: #d3d3d3;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Main layout */
+.main-flex {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+/* image */
+.image-box img {
+  width: 120px;
+  height: auto;
+  display: block;
+}
+
+/* responses area */
+.responses-box {
+  background: var(--muted);
+  padding: 12px;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.4;
+  /* scrollable */
+  max-height: 44vh; /* keeps it sized for mobile screens */
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* white bubble for each response */
+.answer-card {
+  background: var(--bubble-bg);
+  border: 1px solid var(--bubble-border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 12px; /* more space between responses */
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fadeInUp 260ms forwards;
+  word-break: break-word;
+  white-space: pre-wrap; /* keep line breaks if user entered them */
+  font-size: 14px;
+}
+
+/* small note when empty */
+.empty-note {
+  color: #666;
+  padding: 8px;
+  font-size: 14px;
+}
+
+/* animation */
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* responsive adjustments for narrower screens */
+@media (max-width: 420px) {
+  body { padding: 22px 14px; }
+  .question-block h1 { font-size: 40px; }
+  .image-box img { width: 100px; }
+  .responses-box { max-height: 50vh; }
 }

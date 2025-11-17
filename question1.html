@@ -4,92 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Question 1</title>
-
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 3rem;
-    }
-
-    /* Question section */
-    .question-block {
-      max-width: 600px;
-      margin-bottom: 2rem;
-    }
-
-    .question-block p {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .question-block h1 {
-      font-size: 3rem;
-      margin-top: 0.5rem;
-      margin-bottom: 2rem;
-    }
-
-    /* Input + button */
-    .input-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-    }
-
-    input {
-      padding: 0.6rem 1rem;
-      width: 300px;
-      border: 1px solid black;
-      background: white;
-      font-size: 1rem;
-    }
-
-    button {
-      padding: 0.6rem 1.2rem;
-      border: none;
-      background: lightgray;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    .main-flex {
-      display: flex;
-      gap: 2rem;
-      align-items: flex-start;
-      max-width: 800px;
-      margin-top: 2rem;
-    }
-
-    .image-box img {
-      width: 180px;
-      height: auto;
-    }
-
-    .responses-box {
-      background: #eeeeee;
-      padding: 1rem;
-      border-radius: 4px;
-      width: 100%;
-      max-width: 350px;
-      font-size: 0.9rem;
-      line-height: 1.4rem;
-    }
-
-    /* Individual answers fade-in */
-    .answer-card {
-      opacity: 0;
-      animation: fadeIn 0.8s forwards;
-      margin-bottom: 0.4rem;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -112,6 +27,7 @@
     <div id="answersContainer" class="responses-box"></div>
   </div>
 
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
     import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
@@ -130,31 +46,36 @@
     const db = getDatabase(app);
     const answersRef = ref(db, "question1_answers");
 
+    /* Submit Answer */
     window.submitAnswer = function () {
       const val = document.getElementById("answer").value.trim();
       if (val.length > 0) {
         push(answersRef, val);
-        window.location.href = "question2.html";
+        document.getElementById("answer").value = ""; // clear input
       }
     };
 
+    /* Load & display ALL responses */
     onValue(answersRef, snapshot => {
       const answers = snapshot.val();
       const container = document.getElementById("answersContainer");
       container.innerHTML = "";
+
       if (!answers) return;
 
-      let arr = Object.values(answers).sort(() => Math.random() - 0.5).slice(0, 8);
+      // randomize order
+      let arr = Object.values(answers).sort(() => Math.random() - 0.5);
 
       arr.forEach((text, i) => {
         const el = document.createElement("div");
         el.className = "answer-card";
-        el.style.animationDelay = `${i * 0.12}s`;
-        el.textContent = text + ",";
+        el.style.animationDelay = `${i * 0.05}s`;
+        el.textContent = text;
         container.appendChild(el);
       });
     });
   </script>
 
 </body>
+
 </html>
