@@ -1,0 +1,66 @@
+/* main:intro page */
+
+body {
+    color: #111;
+    background: linear-gradient(270deg, #dcd8d3, #c5c9cb, #e2e3e5, #bfc5ca, #e9e4dd);
+    background-size: 300% 300%;
+    overflow: hidden;
+    height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100 vh;
+    height: 100 vw;
+    z-index: -1;
+    pointer-events: none; 
+
+}
+
+#canvas1 {
+    filter: blur(1px) contrast(20);
+}
+
+.main_pg {
+    position: relative; 
+    z-index: 1;
+}
+
+.gif-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;       /* OPTIONAL: makes the gif responsive */
+  max-width: 400px;  /* or whatever size you want */
+}
+
+.gif-wrapper img {
+  display: block;
+}
+
+/* The hitbox scales with the image because it uses % */
+.hitbox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;     /* hitbox = 60% of image width */
+  height: 50%;    /* hitbox = 60% of image height */
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}

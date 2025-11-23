@@ -1,30 +1,158 @@
 /* mobile-first container */
 :root {
-    --max-width: 420px;
-    --gutter: 20px;
-    --muted: #eeeeee;
-    --bubble-bg: #fff;
-    --bubble-border: rgba(0, 0, 0, 0.06);
+  --max-width: 420px;
+  --gutter: 20px;
+  --muted: #eeeeee;
+  --bubble-bg: #fff;
+  --bubble-border: rgba(0,0,0,0.06);
 }
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; 
 }
 
 body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 28px 20px;
-    color: #111;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 28px 20px;
+  background: #fff;
+  color: #111;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Question section */
+.question-block {
+  margin-bottom: 18px;
+}
+.question-block p {
+  font-size: 16px;
+  margin: 0 0 6px 0;
+  letter-spacing: 0.6px;
+}
+.question-block h1 {
+  font-size: 48px;
+  margin: 0 0 14px 0;
+  line-height: 1;
+}
+
+/* Input + button */
+.input-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+input[type="text"] {
+  padding: 14px 12px;
+  flex: 1 1 auto;
+  border: 2px solid #000;
+  background: #fff;
+  font-size: 16px;
+  outline: none;
+  min-width: 0;
+}
+button {
+  padding: 16px 13px;
+  border: none;
+  background: #353839;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+}
+
+/* Main layout */
+.main-flex {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+/* image */
+.image-box img {
+  width: 120px;
+  height: auto;
+  display: block;
+}
+
+/* responses area */
+.responses-box {
+  background: var(--muted);
+  padding: 12px;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.4;
+  /* scrollable */
+  max-height: 44vh; /* keeps it sized for mobile screens */
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* white bubble for each response */
+.answer-card {
+  background: var(--bubble-bg);
+  border: 1px solid var(--bubble-border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 12px; /* more space between responses */
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fadeInUp 260ms forwards;
+  word-break: break-word;
+  white-space: pre-wrap; /* keep line breaks if user entered them */
+  font-size: 14px;
+}
+
+/* small note when empty */
+.empty-note {
+  color: #666;
+  padding: 8px;
+  font-size: 14px;
+}
+
+/* animation */
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* responsive adjustments for narrower screens */
+@media (max-width: 420px) {
+  body { padding: 22px 14px; }
+  .question-block h1 { font-size: 40px; }
+  .image-box img { width: 100px; }
+  .responses-box { max-height: 50vh; }
+}
+
+
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||||||||||Background stuff ||||||||||||||||||||||||||||||||||||||||||
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+*/
+
+
+body {
+    background-color: #e2e3e5;
+    overflow: hidden;
+    height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.question_background {
     background: linear-gradient(270deg, #dcd8d3, #c5c9cb, #e2e3e5, #bfc5ca, #e9e4dd);
-    background-size: 300% 300%;
     animation: gradientShift 20s ease infinite;
     overflow: hidden;
     height: 100vh;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 @keyframes gradientShift {
@@ -40,145 +168,6 @@ body {
         background-position: 0% 50%;
     }
 }
-
-.container {
-    max-width: var(--max-width);
-    margin: 0 auto;
-}
-
-/* Question section */
-.question-block {
-    margin-bottom: 18px;
-}
-
-.question-block p {
-    font-size: 16px;
-    margin: 0 0 6px 0;
-    letter-spacing: 0.6px;
-}
-
-.question-block h1 {
-    font-size: 48px;
-    margin: 0 0 14px 0;
-    line-height: 1;
-}
-
-/* Input + button */
-.input-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-bottom: 18px;
-}
-
-input[type="text"] {
-    padding: 14px 12px;
-    flex: 1 1 auto;
-    border: 2px solid #000;
-    background: #fff;
-    font-size: 16px;
-    outline: none;
-    min-width: 0;
-}
-
-button {
-    padding: 16px 13px;
-    border: none;
-    background: #353839;
-    font-size: 16px;
-    cursor: pointer;
-    color: white;
-}
-
-/* Main layout */
-.main-flex {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-}
-
-/* image */
-.image-box img {
-    width: 6.25vw;
-    height: auto;
-    display: block;
-}
-
-/* responses area */
-.responses-box {
-    background: var(--muted);
-    padding: 12px;
-    border-radius: 6px;
-    width: 100%;
-    font-size: 14px;
-    line-height: 1.4;
-    /* scrollable */
-    max-height: 44vh;
-    /* keeps it sized for mobile screens */
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-}
-
-/* white bubble for each response */
-.answer-card {
-    background: var(--bubble-bg);
-    border: 1px solid var(--bubble-border);
-    border-radius: 6px;
-    padding: 10px 12px;
-    margin-bottom: 12px;
-    /* more space between responses */
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
-    opacity: 0;
-    transform: translateY(6px);
-    animation: fadeInUp 260ms forwards;
-    word-break: break-word;
-    white-space: pre-wrap;
-    /* keep line breaks if user entered them */
-    font-size: 14px;
-}
-
-/* small note when empty */
-.empty-note {
-    color: #666;
-    padding: 8px;
-    font-size: 14px;
-}
-
-/* animation */
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* responsive adjustments for narrower screens */
-@media (max-width: 420px) {
-    body {
-        padding: 22px 14px;
-    }
-
-    .question-block h1 {
-        font-size: 40px;
-    }
-
-    .image-box img {
-        width: 100px;
-    }
-
-    .responses-box {
-        max-height: 50vh;
-    }
-}
-
-
-/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-|||||||||||||||||||||||Background stuff ||||||||||||||||||||||||||||||||||||||||||
-||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-*/
-
 
 .container {
     position: relative;
@@ -217,7 +206,7 @@ button {
 }
 
 .floating-image img {
-    max-width: 9vw;
+    max-width: 120px;
     height: auto;
     border: none;
     outline: none;
@@ -345,20 +334,15 @@ button {
 
 /* Floating animation keyframes with scale changes for focus effect */
 @keyframes float {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: translateY(0px) translateX(0px) rotate(0deg) scale(0.8);
     }
-
     25% {
         transform: translateY(-15px) translateX(8px) rotate(0.5deg) scale(1.1);
     }
-
     50% {
         transform: translateY(-8px) translateX(-12px) rotate(-0.5deg) scale(1.3);
     }
-
     75% {
         transform: translateY(-20px) translateX(4px) rotate(0.3deg) scale(0.9);
     }
@@ -375,39 +359,22 @@ button {
 }
 
 /* Different spot colors */
-.spot-1,
-.spot-4,
-.spot-7,
-.spot-10,
-.spot-13,
-.spot-16,
-.spot-19 {
+.spot-1, .spot-4, .spot-7, .spot-10, .spot-13, .spot-16, .spot-19 {
     background-color: #b2dffd;
 }
 
-.spot-2,
-.spot-5,
-.spot-8,
-.spot-11,
-.spot-14,
-.spot-17,
-.spot-20 {
+.spot-2, .spot-5, .spot-8, .spot-11, .spot-14, .spot-17, .spot-20 {
     background-color: #353839;
 }
 
-.spot-3,
-.spot-6,
-.spot-9,
-.spot-12,
-.spot-15,
-.spot-18 {
+.spot-3, .spot-6, .spot-9, .spot-12, .spot-15, .spot-18 {
     background-color: #adccd9;
 }
 
 /* Spot positioning and depth effects */
 .spot-1 {
-    width: 1.302vw;
-    height: 1.302vw;
+    width: 25px;
+    height: 25px;
     top: 15%;
     left: 20%;
     filter: blur(2.5px);
@@ -417,8 +384,8 @@ button {
 }
 
 .spot-2 {
-    width: 5.208vw;
-    height: 5.208vw;
+    width: 120px;
+    height: 120px;
     top: 70%;
     right: 25%;
     filter: blur(1.5px);
@@ -428,8 +395,8 @@ button {
 }
 
 .spot-3 {
-    width: 1.042vw;
-    height: 1.042vw;
+    width: 15px;
+    height: 15px;
     top: 40%;
     left: 70%;
     filter: blur(0.5px);
@@ -439,8 +406,8 @@ button {
 }
 
 .spot-4 {
-    width: 5.208vw;
-    height: 5.208vw;
+    width: 120px;
+    height: 120px;
     top: 80%;
     left: 10%;
     filter: blur(2px);
@@ -450,8 +417,8 @@ button {
 }
 
 .spot-5 {
-    width: 1.823vw;
-    height: 1.823vw;
+    width: 35px;
+    height: 35px;
     top: 25%;
     right: 40%;
     filter: blur(1.5px);
@@ -461,8 +428,8 @@ button {
 }
 
 .spot-6 {
-    width: 0.417vw;
-    height: 0.417vw;
+    width: 8px;
+    height: 8px;
     top: 55%;
     left: 30%;
     filter: blur(2px);
@@ -472,8 +439,8 @@ button {
 }
 
 .spot-7 {
-    width: 5.208vw;
-    height: 5.208vw;
+    width: 120px;
+    height: 120px;
     top: 10%;
     right: 10%;
     filter: blur(1px);
@@ -483,8 +450,8 @@ button {
 }
 
 .spot-8 {
-    width: 0.625vw;
-    height: 0.625vw;
+    width: 12px;
+    height: 12px;
     top: 65%;
     left: 60%;
     filter: blur(0.5px);
@@ -494,8 +461,8 @@ button {
 }
 
 .spot-9 {
-    width: 0.26vw;
-    height: 0.26vw;
+    width: 5px;
+    height: 5px;
     top: 5%;
     left: 80%;
     filter: blur(4px);
@@ -505,8 +472,8 @@ button {
 }
 
 .spot-10 {
-    width: 5.208vw;
-    height: 5.208vw;
+    width: 120px;
+    height: 120px;
     top: 45%;
     left: 5%;
     filter: blur(2px);
@@ -516,8 +483,8 @@ button {
 }
 
 .spot-11 {
-    width: 0.938vw;
-    height: 0.938vw;
+    width: 18px;
+    height: 18px;
     top: 85%;
     right: 5%;
     filter: blur(1.5px);
@@ -527,8 +494,8 @@ button {
 }
 
 .spot-12 {
-    width: 5.208vw;
-    height: 5.208vw;
+    width: 120px;
+    height: 120px;
     top: 35%;
     right: 30%;
     filter: blur(1px);
@@ -538,8 +505,8 @@ button {
 }
 
 .spot-13 {
-    width: 1.563vw;
-    height: 1.563vw;
+    width: 30px;
+    height: 30px;
     top: 75%;
     left: 40%;
     filter: blur(2.5px);
@@ -549,8 +516,8 @@ button {
 }
 
 .spot-14 {
-    width: 4.167vw;
-    height: 4.167vw;
+    width: 80px;
+    height: 80px;
     top: 20%;
     left: 60%;
     filter: blur(1.8px);
@@ -560,8 +527,8 @@ button {
 }
 
 .spot-15 {
-    width: 0.521vw;
-    height: 0.521vw;
+    width: 10px;
+    height: 10px;
     top: 85%;
     left: 80%;
     filter: blur(3px);
@@ -571,8 +538,8 @@ button {
 }
 
 .spot-16 {
-    width: 5.208vw;
-    height: 5.208vw;
+    width: 100px;
+    height: 100px;
     top: 50%;
     right: 20%;
     filter: blur(1.2px);
@@ -582,8 +549,8 @@ button {
 }
 
 .spot-17 {
-    width: 2.344vw;
-    height: 2.344vw;
+    width: 45px;
+    height: 45px;
     top: 15%;
     left: 30%;
     filter: blur(2px);
@@ -593,8 +560,8 @@ button {
 }
 
 .spot-18 {
-    width: 3.646vw;
-    height: 3.646vw;
+    width: 70px;
+    height: 70px;
     top: 60%;
     left: 15%;
     filter: blur(1.5px);
@@ -604,8 +571,8 @@ button {
 }
 
 .spot-19 {
-    width: 1.042vw;
-    height: 1.042vw;
+    width: 20px;
+    height: 20px;
     top: 90%;
     right: 60%;
     filter: blur(2.8px);
@@ -615,8 +582,8 @@ button {
 }
 
 .spot-20 {
-    width: 5.208vw;
-    height: 5.208vw;
+    width: 120px;
+    height: 120px;
     top: 40%;
     left: 50%;
     filter: blur(0.8px);
@@ -627,8 +594,8 @@ button {
 
 
 .spot-15 {
-    width: 2.604vw;
-    height: 2.604vw;
+    width: 50px;
+    height: 50px;
     top: 15%;
     left: 50%;
     filter: blur(1.2px);
@@ -638,8 +605,8 @@ button {
 }
 
 .spot-16 {
-    width: 1.563vw;
-    height: 1.563vw;
+    width: 30px;
+    height: 30px;
     top: 90%;
     left: 20%;
     filter: blur(0.8px);
@@ -649,8 +616,8 @@ button {
 }
 
 .spot-17 {
-    width: 3.646vw;
-    height: 3.646vw;
+    width: 70px;
+    height: 70px;
     top: 60%;
     right: 50%;
     filter: blur(2.5px);
@@ -660,8 +627,8 @@ button {
 }
 
 .spot-18 {
-    width: 2.344vw;
-    height: 2.344vw;
+    width: 45px;
+    height: 45px;
     top: 25%;
     left: 15%;
     filter: blur(1.8px);
@@ -671,8 +638,8 @@ button {
 }
 
 .spot-19 {
-    width: 1.823vw;
-    height: 1.823vw;
+    width: 35px;
+    height: 35px;
     top: 12%;
     left: 45%;
     filter: blur(3px);
@@ -682,8 +649,8 @@ button {
 }
 
 .spot-20 {
-    width: 3.125vw;
-    height: 3.125vw;
+    width: 60px;
+    height: 60px;
     top: 55%;
     left: 25%;
     filter: blur(2px);
@@ -693,8 +660,8 @@ button {
 }
 
 .spot-21 {
-    width: 2.604vw;
-    height: 2.604vw;
+    width: 50px;
+    height: 50px;
     top: 35%;
     right: 20%;
     filter: blur(1px);
@@ -704,8 +671,8 @@ button {
 }
 
 .spot-22 {
-    width: 2.083vw;
-    height: 2.083vw;
+    width: 40px;
+    height: 40px;
     top: 65%;
     left: 60%;
     filter: blur(2.5px);
@@ -715,8 +682,8 @@ button {
 }
 
 .spot-23 {
-    width: 3.646vw;
-    height: 3.646vw;
+    width: 70px;
+    height: 70px;
     top: 8%;
     left: 35%;
     filter: blur(1.5px);
@@ -726,8 +693,8 @@ button {
 }
 
 .spot-24 {
-    width: 1.563vw;
-    height: 1.563vw;
+    width: 30px;
+    height: 30px;
     top: 88%;
     right: 15%;
     filter: blur(4px);
@@ -737,8 +704,8 @@ button {
 }
 
 .spot-25 {
-    width: 2.865vw;
-    height: 2.865vw;
+    width: 55px;
+    height: 55px;
     top: 42%;
     left: 8%;
     filter: blur(1.8px);
@@ -748,8 +715,8 @@ button {
 }
 
 .spot-26 {
-    width: 2.344vw;
-    height: 2.344vw;
+    width: 45px;
+    height: 45px;
     top: 72%;
     right: 40%;
     filter: blur(2.2px);
@@ -759,8 +726,8 @@ button {
 }
 
 .spot-27 {
-    width: 3.385vw;
-    height: 3.385vw;
+    width: 65px;
+    height: 65px;
     top: 18%;
     right: 5%;
     filter: blur(0.8px);
@@ -770,8 +737,8 @@ button {
 }
 
 .spot-28 {
-    width: 2.083vw;
-    height: 2.083vw;
+    width: 40px;
+    height: 40px;
     top: 48%;
     left: 85%;
     filter: blur(2px);
@@ -781,8 +748,8 @@ button {
 }
 
 .spot-29 {
-    width: 2.604vw;
-    height: 2.604vw;
+    width: 50px;
+    height: 50px;
     top: 78%;
     left: 45%;
     filter: blur(2.5px);
@@ -792,8 +759,8 @@ button {
 }
 
 .spot-30 {
-    width: 3.125vw;
-    height: 3.125vw;
+    width: 60px;
+    height: 60px;
     top: 28%;
     left: 75%;
     filter: blur(1.2px);
@@ -804,20 +771,15 @@ button {
 
 /* Spot floating animation */
 @keyframes floatSpot {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: translateY(0px) translateX(0px) scale(1);
     }
-
     25% {
         transform: translateY(-10px) translateX(6px) scale(1.05);
     }
-
     50% {
         transform: translateY(-5px) translateX(-8px) scale(0.95);
     }
-
     75% {
         transform: translateY(-15px) translateX(4px) scale(1.02);
     }
@@ -825,64 +787,45 @@ button {
 
 /* Fade in/out animation for dots - much slower */
 @keyframes fadeInOut {
-
-    0%,
-    25% {
+    0%, 25% {
         opacity: 0;
     }
-
-    35%,
-    65% {
+    35%, 65% {
         opacity: 1;
     }
-
-    75%,
-    100% {
+    75%, 100% {
         opacity: 0;
     }
 }
 
 /* Slow color-shifting animation between the three colors */
 @keyframes colorShift {
-
-    0%,
-    33% {
+    0%, 33% {
         background-color: #c0cfb2;
     }
-
-    33%,
-    66% {
+    33%, 66% {
         background-color: #8ba888;
     }
-
-    66%,
-    100% {
+    66%, 100% {
         background-color: #f1ebe1;
     }
 }
 
 /* Blur/clearness animation for images - clearer when larger, blurrier when smaller */
 @keyframes blurChange {
-
-    0%,
-    20% {
+    0%, 20% {
         filter: blur(3px);
     }
-
     25% {
         filter: blur(1px);
     }
-
     50% {
         filter: blur(0px);
     }
-
     75% {
         filter: blur(2px);
     }
-
-    80%,
-    100% {
+    80%, 100% {
         filter: blur(3px);
     }
 }
@@ -892,43 +835,33 @@ button {
     0% {
         transform: translate(0%, 0%);
     }
-
     10% {
         transform: translate(15%, 8%);
     }
-
     20% {
         transform: translate(30%, 5%);
     }
-
     30% {
         transform: translate(45%, 12%);
     }
-
     40% {
         transform: translate(60%, 8%);
     }
-
     50% {
         transform: translate(75%, 15%);
     }
-
     60% {
         transform: translate(85%, 20%);
     }
-
     70% {
         transform: translate(80%, 35%);
     }
-
     80% {
         transform: translate(60%, 50%);
     }
-
     90% {
         transform: translate(30%, 40%);
     }
-
     100% {
         transform: translate(0%, 0%);
     }
@@ -939,31 +872,24 @@ button {
     0% {
         transform: translate(0%, 0%);
     }
-
     15% {
         transform: translate(20%, 10%);
     }
-
     30% {
         transform: translate(40%, 5%);
     }
-
     45% {
         transform: translate(70%, 15%);
     }
-
     60% {
         transform: translate(90%, 25%);
     }
-
     75% {
         transform: translate(85%, 45%);
     }
-
     90% {
         transform: translate(50%, 60%);
     }
-
     100% {
         transform: translate(0%, 0%);
     }
@@ -974,31 +900,24 @@ button {
     0% {
         transform: translate(0%, 0%);
     }
-
     12% {
         transform: translate(10%, 15%);
     }
-
     25% {
         transform: translate(25%, 20%);
     }
-
     40% {
         transform: translate(50%, 25%);
     }
-
     55% {
         transform: translate(75%, 30%);
     }
-
     70% {
         transform: translate(80%, 50%);
     }
-
     85% {
         transform: translate(60%, 70%);
     }
-
     100% {
         transform: translate(0%, 0%);
     }
@@ -1009,12 +928,32 @@ button {
     .floating-image img {
         max-width: 2vw;
     }
-
+    
     .color-spot {
-        animation-duration: 18s;
+        animation-duration: 15s;
     }
-
+    
     .floating-image {
-        animation-duration: 28s;
+        animation-duration: 25s;
     }
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100 vh;
+    height: 100 vw;
+    z-index: -1;
+    pointer-events: none; 
+
+}
+
+#canvas1 {
+    filter: blur(1px) contrast(20);
+}
+
+.main_pg {
+    position: relative; 
+    z-index: 1;
 }
