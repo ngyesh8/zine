@@ -10,8 +10,8 @@ body {
 
 p {
     line-height: 2;
-    font-family: "sictake-bokke", sans-serif;
-    font-weight: 900;
+    font-family: "lores-15-narrow", sans-serif;
+    font-weight: 400;
     font-style: normal;
     font-size: 1.2rem;
     user-select: none;
@@ -77,7 +77,7 @@ canvas {
 
 .gif-wrapper img {
     display: block;
-    margin: -10%;
+    margin-left: -10%;
 
     -webkit-user-drag: none;
     user-drag: none;
