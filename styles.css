@@ -1,4 +1,3 @@
-
 /* mobile-first container */
 :root {
     --max-width: 420px;
@@ -27,6 +26,27 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+h2 {
+    line-height: 2;
+    font-family: "lores-15", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+p {
+    line-height: 1.3;
+    font-family: "lores-12-narrow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.info {
+    line-height: 1.5;
+    position: absolute;
+    left:2.6%;
+}
+
 
 @keyframes gradientShift {
     0% {
@@ -73,22 +93,31 @@ body {
 }
 
 input[type="text"] {
+    /* enter stuff section */
     padding: 14px 12px;
     flex: 1 1 auto;
+    border-radius: 6px;
     border: 2px solid #000;
     background: #fff;
     font-size: 16px;
     outline: none;
     min-width: 0;
+    font-family: "ta-rb", sans-serif;
+    font-weight: 300;
+    font-style: normal;
 }
 
 button {
     padding: 16px 13px;
     border: none;
+    border-radius: 6px;
     background: #353839;
     font-size: 16px;
     cursor: pointer;
     color: white;
+    font-family: "galix-mono", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 /* Main layout */
@@ -119,6 +148,9 @@ button {
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+    font-family: "galix-mono", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 /* white bubble for each response */
@@ -202,7 +234,26 @@ button {
     border: none;
     outline: none;
     transition: filter 0.3s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-touch-callout: none;
 }
+
+.float_img_linked img {
+    pointer-events: auto;
+    cursor: pointer;
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    touch-action: none;
+}
+.float_img_linked {
+    touch-action: manipulation;
+}
+
+
 
 /* Individual drift animations for each image */
 .image-1 {

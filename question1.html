@@ -3,17 +3,49 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>100% battery</title>
+  <title>battery checkup</title>
 
-  <link rel="stylesheet" href="styles.css"> 
+  <link rel="stylesheet" href="styles.css">
+
+  <script>
+    (function (d) {
+      var config = {
+          kitId: 'lle1zwc',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h = d.documentElement,
+        t = setTimeout(function () {
+          h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+        }, config.scriptTimeout),
+        tk = d.createElement("script"),
+        f = false,
+        s = d.getElementsByTagName("script")[0],
+        a;
+      h.className += " wf-loading";
+      tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+      tk.async = true;
+      tk.onload = tk.onreadystatechange = function () {
+        a = this.readyState;
+        if (f || a && a != "complete" && a != "loaded") return;
+        f = true;
+        clearTimeout(t);
+        try {
+          Typekit.load(config)
+        } catch (e) {}
+      };
+      s.parentNode.insertBefore(tk, s)
+    })(document);
+  </script>
 
 </head>
 
 <body>
 
   <div class="question-block">
-    <p>What are you doing on your device when it is at</p>
-    <h1>100%?</h1>
+    <h2>Quick Checkup...</h2>
+    <p>What battery % is your current device at right now?</p>
+    <p>How long has it been since you last charged?</p>
   </div>
 
   <div class="input-row">
@@ -26,7 +58,11 @@
 
     <div id="answersContainer" class="responses-box"></div>
   </div>
- 
+  <br>
+  <div>
+    <p class="info">// leftmost image takes you back, right most takes you forward</p>
+  </div>
+
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
@@ -110,16 +146,20 @@
   <div class="color-spot spot-20" data-depth="0.4"></div>
 
   <div class="floating-image image-1" data-depth="0.3">
-            <img src="images/gf1.gif" alt="Floating Image 1">
-        </div>
-        
-        <div class="floating-image image-2" data-depth="0.6">
-            <img src="images/gf2.gif" alt="Floating Image 2">
-        </div>
-        
-        <div class="floating-image image-3" data-depth="0.9">
-            <img src="images/gf03.gif" alt="Floating Image 3">
-        </div>
+    <a href="index.html" class="float_img_linked">
+      <img src="images/gf1.gif" alt="Floating Image 1">
+    </a>
+  </div>
+
+  <div class="floating-image image-2" data-depth="0.6">
+    <a href="question2.html" class="float_img_linked">
+      <img src="images/gf2.gif" alt="Floating Image 2">
+    </a>
+  </div>
+
+  <div class="floating-image image-3" data-depth="0.9">
+    <img src="images/gf03.gif" alt="Floating Image 3">
+  </div>
 
 </body>
 
