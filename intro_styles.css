@@ -10,10 +10,10 @@ body {
 
 p {
     line-height: 2;
-    font-family: "lores-15-narrow", sans-serif;
+    font-family: "sictake-bokke", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 1.2rem;
+    font-size: 1.13rem;
     user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -71,13 +71,13 @@ canvas {
     position: absolute;
     display: inline-block;
     width: 100%;
-    max-width: 350px;
+    max-width: 360px;
     max-height: auto;
 }
 
 .gif-wrapper img {
     display: block;
-    margin-left: -10%;
+    margin: -15%;
 
     -webkit-user-drag: none;
     user-drag: none;
@@ -91,7 +91,7 @@ canvas {
 .hitbox {
     position: absolute;
     top: 48%;
-    left: 50%;
+    left: 45%;
     width: 50%;
     height: 50%;
     transform: translate(-50%, -50%);
