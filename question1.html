@@ -23,12 +23,6 @@
 
   <div class="main-flex">
     <br>
-    <!--
-    <div class="image-box">
-      <img src="images/battery.png" alt="battery">
-    </div>
-     -->
-
 
     <div id="answersContainer" class="responses-box"></div>
   </div>
@@ -62,6 +56,14 @@
         document.getElementById("answer").value = ""; // clear input
       }
     };
+    const input = document.getElementById("answer");
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        submitAnswer();
+      }
+    });
 
     /* Load & display ALL responses */
     onValue(answersRef, snapshot => {
@@ -72,7 +74,7 @@
       if (!answers) return;
 
       // randomize order
-      let arr = Object.values(answers).sort(() => Math.random() - 0.5);
+      let arr = Object.values(answers).reverse();
 
       arr.forEach((text, i) => {
         const el = document.createElement("div");
@@ -116,7 +118,7 @@
         </div>
         
         <div class="floating-image image-3" data-depth="0.9">
-            <img src="images/gf3.gif" alt="Floating Image 3">
+            <img src="images/gf03.gif" alt="Floating Image 3">
         </div>
 
 </body>

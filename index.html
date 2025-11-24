@@ -6,13 +6,45 @@
     <title>Battery Health</title>
 
     <link rel="stylesheet" href="intro_styles.css">
+
+    <script>
+        (function (d) {
+            var config = {
+                    kitId: 'lle1zwc',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement,
+                t = setTimeout(function () {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function () {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {}
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+
 </head>
 
 <body>
     <div class="main_pg">
         <p> How frequently do you think about your device's battery level ? <br>
             Probably not that often — huh ? . . <br>
-            After all, you can almost always find some way to recharge when needed. <br>
+            After all, it's not that hard to recharge <br>
             Or perhaps you are always plugged in . . . <br>
             <br>
             Imagine all the chargers in the world suddenly vanished. <br>
@@ -20,7 +52,7 @@
         </p>
         <br>
         <div class="gif-wrapper">
-            <img src="images/comp_anime.gif" alt="._." width="600vw" draggable="false">
+            <img src="images/comp_anime.gif" alt="._." width="450vw" draggable="false">
             <a href="question1.html" class="hitbox"></a>
         </div>
     </div>

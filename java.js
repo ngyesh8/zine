@@ -4,17 +4,13 @@ onValue(answersRef, snapshot => {
   container.innerHTML = "";
   if (!answers) return;
 
-  // Convert to array of objects: { key, value }
   let arr = Object.entries(answers).map(([key, value]) => ({
     key,
     text: value
   }));
 
-  // Firebase stores entries by push() in chronological order.
-  // Therefore: reverse() = newest → oldest
   arr.reverse();
 
-  // Display them in order (newest first)
   arr.forEach((item, i) => {
     const el = document.createElement("div");
     el.className = "answer-card";
