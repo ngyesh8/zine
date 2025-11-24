@@ -6,7 +6,6 @@ body {
     background-size: 300% 300%;
     overflow: hidden;
     height: 100vh;
-    
 }
 
 p {
@@ -61,17 +60,23 @@ canvas {
     padding: 20px;
 }
 
+.clickeicon {
+    z-index: 2;
+    left: 70%;
+}
+
 .gif-wrapper {
     position: absolute;
     display: inline-block;
     width: 100%;
-    max-width: 23vw;
-    max-height: 20vw;
+    max-width: 300px;
+    max-height: auto;
 }
 
 .gif-wrapper img {
     display: block;
     margin: 0%;
+
     -webkit-user-drag: none;
     user-drag: none;
     user-select: none;
@@ -83,7 +88,7 @@ canvas {
 
 .hitbox {
     position: absolute;
-    top: 76%;
+    top: 48%;
     left: 70%;
     width: 50%;
     height: 50%;
