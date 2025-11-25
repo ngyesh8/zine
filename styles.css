@@ -33,6 +33,18 @@ h1 {
     font-weight: 400;
     font-style: normal;
     z-index: 5;
+    filter: blur(6px);
+    animation: depixelate 1.2s ease-out forwards;
+}
+
+@keyframes depixelate {
+    from {
+        filter: blur(6px);
+    }
+
+    to {
+        filter: blur(0);
+    }
 }
 
 h2 {
@@ -49,6 +61,8 @@ p {
     font-weight: 400;
     font-style: normal;
     z-index: 5;
+    filter: blur(6px);
+    animation: depixelate 1.2s ease-out forwards;
 }
 
 .info {
@@ -338,7 +352,7 @@ button {
 }
 
 /* q3 */
-.floating-image[data-depth="0.1"] {
+.floating-image[data-depth="0.31"] {
     top: 75%;
     left: 9%;
     transform: scale(0.6);
@@ -346,7 +360,7 @@ button {
     z-index: 1;
 }
 
-.floating-image[data-depth="0.2"] {
+.floating-image[data-depth="0.61"] {
     top: 55%;
     right: 35%;
     transform: scale(0.8);
@@ -354,32 +368,7 @@ button {
     z-index: 2;
 }
 
-.floating-image[data-depth="0.7"] {
-    top: 10%;
-    left: 30%;
-    transform: scale(1.2);
-    filter: blur(0px);
-    z-index: 3;
-}
-
-/* q3 */
-.floating-image[data-depth="0.1"] {
-    top: 75%;
-    left: 9%;
-    transform: scale(0.6);
-    filter: blur(1.3px);
-    z-index: 1;
-}
-
-.floating-image[data-depth="0.2"] {
-    top: 55%;
-    right: 35%;
-    transform: scale(0.8);
-    filter: blur(1px);
-    z-index: 2;
-}
-
-.floating-image[data-depth="0.7"] {
+.floating-image[data-depth="0.91"] {
     top: 10%;
     left: 30%;
     transform: scale(1.2);
@@ -388,6 +377,31 @@ button {
 }
 
 /* q4 */
+.floating-image[data-depth="0.1"] {
+    top: 75%;
+    left: 9%;
+    transform: scale(0.6);
+    filter: blur(1.3px);
+    z-index: 1;
+}
+
+.floating-image[data-depth="0.2"] {
+    top: 55%;
+    right: 35%;
+    transform: scale(0.8);
+    filter: blur(1px);
+    z-index: 2;
+}
+
+.floating-image[data-depth="0.7"] {
+    top: 10%;
+    left: 30%;
+    transform: scale(1.2);
+    filter: blur(0px);
+    z-index: 3;
+}
+
+/* q5 */
 .floating-image[data-depth="0.35"] {
     top: 4%;
     left: 16%;
@@ -412,30 +426,107 @@ button {
     z-index: 3;
 }
 
-/* q5 */
+/* q6 */
 .floating-image[data-depth="0.45"] {
-    top: 5%;
-    left: 14%;
-    transform: scale(0.6);
-    filter: blur(1.3px);
+    top: 65%;
+    left: 10%;
+    transform: scale(0.9);
+    filter: blur(0px);
     z-index: 1;
 }
 
 .floating-image[data-depth="0.55"] {
-    top: 40%;
-    right: 20%;
-    transform: scale(0.8);
-    filter: blur(1px);
+    top: 35%;
+    right: 15%;
+    transform: scale(1.2);
+    filter: blur(0px);
     z-index: 2;
 }
 
 .floating-image[data-depth="0.85"] {
-    top: 60%;
-    left: 30%;
-    transform: scale(1.2);
+    top: 10%;
+    left: 60%;
+    transform: scale(0.3);
+    filter: blur(1.3px);
+    z-index: 3;
+}
+
+/* q7 */
+.floating-image[data-depth="0.15"] {
+    top: 19%;
+    left: 20%;
+    transform: scale(1.6);
+    filter: blur(1.3px);
+    z-index: 1;
+}
+
+.floating-image[data-depth="0.25"] {
+    top: 35%;
+    right: 10%;
+    transform: scale(0.2);
+    filter: blur(1px);
+    z-index: 2;
+}
+
+.floating-image[data-depth="0.75"] {
+    top: 76%;
+    left: 58%;
+    transform: scale(0.8);
     filter: blur(0px);
     z-index: 3;
 }
+
+/* q8 */
+.floating-image[data-depth="0.37"] {
+    top: 56%;
+    left: 8%;
+    transform: scale(1.6);
+    filter: blur(1.3px);
+    z-index: 1;
+}
+
+.floating-image[data-depth="0.67"] {
+    top: 78%;
+    right: 10%;
+    transform: scale(0.2);
+    filter: blur(1px);
+    z-index: 2;
+}
+
+.floating-image[data-depth="0.27"] {
+    top: 5%;
+    left: 30%;
+    transform: scale(0.8);
+    filter: blur(0px);
+    z-index: 3;
+}
+
+/* q9 */
+.floating-image[data-depth="0.28"] {
+    top: 56%;
+    left: 34%;
+    transform: scale(1.6);
+    filter: blur(1.3px);
+    z-index: 1;
+}
+
+.floating-image[data-depth="0.58"] {
+    top: 78%;
+    right: 10%;
+    transform: scale(0.2);
+    filter: blur(1px);
+    z-index: 2;
+}
+
+.floating-image[data-depth="0.83"] {
+    top: 10%;
+    left: 54%;
+    transform: scale(0.8);
+    filter: blur(0px);
+    z-index: 3;
+}
+
+
 
 
 

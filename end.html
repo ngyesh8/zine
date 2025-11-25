@@ -1,0 +1,82 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>battery health</title>
+
+    <link rel="stylesheet" href="intro_styles.css">
+
+    <script>
+        (function (d) {
+            var config = {
+                    kitId: 'lle1zwc',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement,
+                t = setTimeout(function () {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function () {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {}
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+
+</head>
+
+<body>
+    <div class="end_pg">
+        <h1 class="pixel-reveal">your battery died.</h1>
+        <img src="images/gtchfix2.gif" alt="dedbatteryfinal" width="250px" draggable="false">
+        <h1>thanks for participating in my social experiment :P</h1>
+
+
+        <br>
+
+        <div class="row">
+
+            <a href="https://ngyesh8.github.io/sound_exrc/" class="item">
+                <img src="images/filegf.gif" alt="jpop_file" width="100px" draggable="false">
+                <p>listen to jpop mv</p>
+            </a>
+
+            <a href="index.html" class="item">
+                <img src="images/filegf.gif" alt="home_file" width="100px" draggable="false">
+                <p>back to home page</p>
+            </a>
+
+        </div>
+
+        <div class="overlap-box">
+            <img class="img1" src="images/plantbox.JPG" width="50px">
+            <img class="img2" src="images/errorframe.png" width="50px">
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>

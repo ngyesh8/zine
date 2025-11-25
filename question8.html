@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>screen time guess</title>
+  <title>battery 1/4</title>
 
   <link rel="stylesheet" href="styles.css">
 
@@ -43,8 +43,11 @@
 <body>
 
   <div class="question-block">
-    <h2>Suppose you had to break your daily screen time into percentages. How much would you say goes into different activities?</h2>
-    <p>(i.e., schoolwork, entertainment, social media, messaging, etc.)</p>
+    <h2>What do you see yourself doing when your device is around?..</h2>
+    <h1>20–5%</h1>
+    <p>・Remember, you cannot recharge (._. '')</p>
+    <p>・Do you notice when your battery is low, or do you often forget?..</p>
+
   </div>
 
   <div class="input-row">
@@ -81,7 +84,7 @@
 
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
-    const answersRef = ref(db, "question3_answers");
+    const answersRef = ref(db, "question8_answers");
 
     /* Submit Answer */
     window.submitAnswer = function () {
@@ -144,20 +147,20 @@
   <div class="color-spot spot-19" data-depth="0.1"></div>
   <div class="color-spot spot-20" data-depth="0.4"></div>
 
-  <div class="floating-image image-1" data-depth="0.31">
-    <a href="question2.html" class="float_img_linked">
-      <img src="images/gfdino.gif" alt="Floating Image 7">
+  <div class="floating-image image-1" data-depth="0.28">
+    <a href="question7.html" class="float_img_linked">
+      <img src="images/hfwdice.gif" alt="Floating Image 19">
     </a>
   </div>
 
-  <div class="floating-image image-2" data-depth="0.61">
-    <a href="question4.html" class="float_img_linked">
-      <img src="images/gf_w1.gif" alt="Floating Image 8">
+  <div class="floating-image image-2" data-depth="0.58">
+    <a href="end.html" class="float_img_linked">
+      <img src="images/gferror1.gif" alt="Floating Image 20">
     </a>
   </div>
 
-  <div class="floating-image image-3" data-depth="0.91">
-    <img src="images/gferror2.gif" alt="Floating Image 9">
+  <div class="floating-image image-3" data-depth="0.83">
+    <img src="images/gfded.gif" alt="Floating Image 21">
   </div>
 
 </body>
