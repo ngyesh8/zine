@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>battery checkup</title>
+  <title>screen time guess</title>
 
   <link rel="stylesheet" href="styles.css">
 
@@ -43,9 +43,8 @@
 <body>
 
   <div class="question-block">
-    <h2>Quick Checkup...</h2>
-    <p>・What battery % is your current device at right now?</p>
-    <p>・How long has it been since you last charged?</p>
+    <h2>Suppose you had to break your daily screen time into percentages. How much would you say goes into different activities?</h2>
+    <p>(i.e., schoolwork, entertainment, social media, messaging, etc.)</p>
   </div>
 
   <div class="input-row">
@@ -82,7 +81,7 @@
 
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
-    const answersRef = ref(db, "question1_answers");
+    const answersRef = ref(db, "question3_answers");
 
     /* Submit Answer */
     window.submitAnswer = function () {
@@ -145,20 +144,20 @@
   <div class="color-spot spot-19" data-depth="0.1"></div>
   <div class="color-spot spot-20" data-depth="0.4"></div>
 
-  <div class="floating-image image-1" data-depth="0.3">
-    <a href="index.html" class="float_img_linked">
-      <img src="images/gf1.gif" alt="Floating Image 1">
-    </a>
-  </div>
-
-  <div class="floating-image image-2" data-depth="0.6">
+  <div class="floating-image image-1" data-depth="0.1">
     <a href="question2.html" class="float_img_linked">
-      <img src="images/gf2.gif" alt="Floating Image 2">
+      <img src="images/gfdino.gif" alt="Floating Image 7">
     </a>
   </div>
 
-  <div class="floating-image image-3" data-depth="0.9">
-    <img src="images/gf03.gif" alt="Floating Image 3">
+  <div class="floating-image image-2" data-depth="0.2">
+    <a href="question4.html" class="float_img_linked">
+      <img src="images/gf_w1.gif" alt="Floating Image 8">
+    </a>
+  </div>
+
+  <div class="floating-image image-3" data-depth="0.7">
+    <img src="images/gferror2.gif" alt="Floating Image 9">
   </div>
 
 </body>

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>battery checkup</title>
+  <title></title>
 
   <link rel="stylesheet" href="styles.css">
 
@@ -43,13 +43,13 @@
 <body>
 
   <div class="question-block">
-    <h2>Quick Checkup...</h2>
-    <p>・What battery % is your current device at right now?</p>
-    <p>・How long has it been since you last charged?</p>
+    <h2>Now... if you are comfortable... go to your phone's settings and show us your actual "Daily Average."</h2>
+    <p>・How much time this week was spent on entertainment, utilities, games, etc.?</p>
+    <p>・If possible, can you also share your Daily Average Pickups, Most Pickups, and Total Pickups?</p>
   </div>
 
   <div class="input-row">
-    <input type="text" id="answer" placeholder="your thoughts...">
+    <input type="text" id="answer" placeholder="no shame in sharing...">
     <button onclick="submitAnswer()">share</button>
   </div>
 
@@ -82,7 +82,7 @@
 
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
-    const answersRef = ref(db, "question1_answers");
+    const answersRef = ref(db, "question5_answers");
 
     /* Submit Answer */
     window.submitAnswer = function () {
@@ -145,20 +145,20 @@
   <div class="color-spot spot-19" data-depth="0.1"></div>
   <div class="color-spot spot-20" data-depth="0.4"></div>
 
-  <div class="floating-image image-1" data-depth="0.3">
-    <a href="index.html" class="float_img_linked">
-      <img src="images/gf1.gif" alt="Floating Image 1">
+  <div class="floating-image image-1" data-depth="0.45">
+    <a href="question3.html" class="float_img_linked">
+      <img src="images/gfhrs.gif" alt="Floating Image 13">
     </a>
   </div>
 
-  <div class="floating-image image-2" data-depth="0.6">
-    <a href="question2.html" class="float_img_linked">
-      <img src="images/gf2.gif" alt="Floating Image 2">
+  <div class="floating-image image-2" data-depth="0.55">
+    <a href="question5.html" class="float_img_linked">
+      <img src="images/gf_b2.gif" alt="Floating Image 14">
     </a>
   </div>
 
-  <div class="floating-image image-3" data-depth="0.9">
-    <img src="images/gf03.gif" alt="Floating Image 3">
+  <div class="floating-image image-3" data-depth="0.85">
+    <img src="images/gf_w2.gif" alt="Floating Image 15">
   </div>
 
 </body>

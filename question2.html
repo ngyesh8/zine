@@ -3,65 +3,72 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Question 2</title>
+  <title>full battery</title>
 
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 2rem;
-    }
+  <link rel="stylesheet" href="styles.css">
 
-    input {
-      padding: 0.5rem;
-      width: 60%;
-      margin: 1rem 0;
-    }
+  <script>
+    (function (d) {
+      var config = {
+          kitId: 'lle1zwc',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h = d.documentElement,
+        t = setTimeout(function () {
+          h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+        }, config.scriptTimeout),
+        tk = d.createElement("script"),
+        f = false,
+        s = d.getElementsByTagName("script")[0],
+        a;
+      h.className += " wf-loading";
+      tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+      tk.async = true;
+      tk.onload = tk.onreadystatechange = function () {
+        a = this.readyState;
+        if (f || a && a != "complete" && a != "loaded") return;
+        f = true;
+        clearTimeout(t);
+        try {
+          Typekit.load(config)
+        } catch (e) {}
+      };
+      s.parentNode.insertBefore(tk, s)
+    })(document);
+  </script>
 
-    button {
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-    }
-
-    .answers-container {
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .answer-card {
-      background: #f5f5f5;
-      padding: 10px 14px;
-      border-radius: 8px;
-      text-align: left;
-      opacity: 0;
-      animation: fadeIn 0.8s forwards;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-  </style>
 </head>
 
 <body>
-  <h1>Question 2</h1>
-  <p>What is something that made you smile recently?</p>
 
-  <input type="text" id="answer" placeholder="Type your answer here">
-  <button onclick="submitAnswer()">Next</button>
+  <div class="question-block">
+    <h2>What do you see yourself doing when your device is around?..</h2>
+    <h1>100–80%</h1>
+    <p>Within this range, is there a specific battery level that usually makes you pause and check your device? Why?</p>
+  </div>
 
-  <div id="answersContainer" class="answers-container"></div>
+  <div class="input-row">
+    <input type="text" id="answer" placeholder="your thoughts...">
+    <button onclick="submitAnswer()">share</button>
+  </div>
+
+  <div class="main-flex">
+    <br>
+
+    <div id="answersContainer" class="responses-box"></div>
+  </div>
+  <br>
+  <div>
+    <p class="info">// leftmost image takes you back, right most takes you forward</p>
+  </div>
+
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
     import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+
+    
 
     const firebaseConfig = {
       apiKey: "AIzaSyApYOoX_nkOs3Sb3b9xZd_KKwc-PG0v8Uk",
@@ -70,43 +77,89 @@
       projectId: "interactive-site-project-3",
       storageBucket: "interactive-site-project-3.firebasestorage.app",
       messagingSenderId: "959806604439",
-      appId: "1:959806604439:web:033937fd1f63425b0dd5d2",
-      measurementId: "G-NNM8LFSXNY"
+      appId: "1:959806604439:web:033937fd1f63425b0dd5d2"
     };
 
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
     const answersRef = ref(db, "question2_answers");
 
-    // Submit and move forward
+    /* Submit Answer */
     window.submitAnswer = function () {
-      const input = document.getElementById("answer").value.trim();
-      if (input.length > 0) {
-        push(answersRef, input);
-        window.location.href = "question3.html"; // Change this later if needed
+      const val = document.getElementById("answer").value.trim();
+      if (val.length > 0) {
+        push(answersRef, val);
+        document.getElementById("answer").value = ""; // clear input
       }
     };
+    const input = document.getElementById("answer");
 
-    // Display past answers (random, max 8)
-    const answersContainer = document.getElementById("answersContainer");
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        submitAnswer();
+      }
+    });
 
-    onValue(answersRef, (snapshot) => {
-      const data = snapshot.val();
-      answersContainer.innerHTML = "";
+    /* Load & display ALL responses */
+    onValue(answersRef, snapshot => {
+      const answers = snapshot.val();
+      const container = document.getElementById("answersContainer");
+      container.innerHTML = "";
 
-      if (!data) return;
+      if (!answers) return;
 
-      let answers = Object.values(data);
-      answers = answers.sort(() => Math.random() - 0.5);
-      answers.slice(0, 8).forEach((text, i) => {
-        const card = document.createElement("div");
-        card.className = "answer-card";
-        card.style.animationDelay = `${i * 0.12}s`;
-        card.textContent = text;
-        answersContainer.appendChild(card);
+      // randomize order
+      let arr = Object.values(answers).reverse();
+
+      arr.forEach((text, i) => {
+        const el = document.createElement("div");
+        el.className = "answer-card";
+        el.style.animationDelay = `${i * 0.05}s`;
+        el.textContent = text;
+        container.appendChild(el);
       });
     });
   </script>
+
+
+
+  <div class="color-spot spot-1" data-depth="0.2"></div>
+  <div class="color-spot spot-2" data-depth="0.4"></div>
+  <div class="color-spot spot-3" data-depth="0.7"></div>
+  <div class="color-spot spot-4" data-depth="0.5"></div>
+  <div class="color-spot spot-5" data-depth="0.8"></div>
+  <div class="color-spot spot-6" data-depth="0.3"></div>
+  <div class="color-spot spot-7" data-depth="0.6"></div>
+  <div class="color-spot spot-8" data-depth="0.9"></div>
+  <div class="color-spot spot-9" data-depth="0.1"></div>
+  <div class="color-spot spot-10" data-depth="0.4"></div>
+  <div class="color-spot spot-11" data-depth="0.6"></div>
+  <div class="color-spot spot-12" data-depth="0.8"></div>
+  <div class="color-spot spot-13" data-depth="0.2"></div>
+  <div class="color-spot spot-14" data-depth="0.5"></div>
+  <div class="color-spot spot-15" data-depth="0.7"></div>
+  <div class="color-spot spot-16" data-depth="0.9"></div>
+  <div class="color-spot spot-17" data-depth="0.3"></div>
+  <div class="color-spot spot-18" data-depth="0.6"></div>
+  <div class="color-spot spot-19" data-depth="0.1"></div>
+  <div class="color-spot spot-20" data-depth="0.4"></div>
+
+  <div class="floating-image image-1" data-depth="0.4">
+    <a href="question1.html" class="float_img_linked">
+      <img src="images/gfsilent.gif" alt="Floating Image 4">
+    </a>
+  </div>
+
+  <div class="floating-image image-2" data-depth="0.5">
+    <a href="question3.html" class="float_img_linked">
+      <img src="images/gfcat4.gif" alt="Floating Image 5">
+    </a>
+  </div>
+
+  <div class="floating-image image-3" data-depth="0.8">
+    <img src="images/gf_b1.gif" alt="Floating Image 6">
+  </div>
 
 </body>
 
