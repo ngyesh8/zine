@@ -165,21 +165,3 @@ canvas {
     -webkit-touch-callout: none;
     touch-action: none;
 }
-
-.overlap-box {
-  position: relative;
-  width: 300px;   /* can use %, vw, clamp, etc */
-  margin: 0 auto;
-}
-
-.overlap-box img {
-  position: absolute;
-  width: 100%;    /* keeps both images same size on all screens */
-  left: 0;
-  top: 0;
-}
-
-.img2 {
-  opacity: 0.8;   /* example: slightly transparent */
-  transform: translate(10px, -20px); /* moves it relative to the other */
-}
