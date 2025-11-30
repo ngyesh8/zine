@@ -53,6 +53,8 @@ h2 {
     font-weight: 700;
     font-style: normal;
     z-index: 5;
+    filter: blur(6px);
+    animation: depixelate 1.2s ease-out forwards;
 }
 
 p {
